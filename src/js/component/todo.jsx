@@ -9,6 +9,7 @@ const ToDoList = () => {
     const handleKeyDown = event => {
         if (event.key === 'Enter' && !task == "" && !task.length <= 40) {
             setTaskListValue(current => [...current, task]);
+            setTaskValue("")
         }
       };
 
@@ -29,13 +30,13 @@ const ToDoList = () => {
                     <ul className="list-group">
                         {taskList.map((element, index) => {
                             return (
-                                <li className="list-group-item rounded-0 border w-50 d-flex justify-content-between align-items-center">
+                                <li key={index} className="list-group-item rounded-0 border w-50 d-flex justify-content-between align-items-center task-none">
                                     {element}
                                     <button type='button' onClick={() => removeTask(index)} className='btn btn-danger'>X</button>
                                 </li>
                             );
                         })}
-                        <li className="list-group-item rounded-0 border w-50 text-muted"><small>{taskList.length} {taskList.lenght == 1 ? "item" : "items" } left</small></li>
+                        <li className="list-group-item rounded-0 border w-50 text-muted"><small>{taskList.length} {taskList.length == 1 ? "item" : "items" } left</small></li>
                     </ul>
             </div>
 	);
